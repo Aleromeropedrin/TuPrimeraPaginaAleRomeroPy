@@ -1,0 +1,28 @@
+{% extends "blog/base.html" %}
+{% block contenido %}
+<h2 class="text-center mb-4">Buscar Película</h2>
+
+<form method="get">
+    {{ form.as_p }}
+    <div class="text-center mt-3">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+</form>
+
+<!-- Mostrar resultados -->
+<div class="container mt-4">
+    {% if resultados %}
+        <h3>Resultados:</h3>
+        <ul>
+            {% for pelicula in resultados %}
+                <li>{{ pelicula.titulo }} ({{ pelicula.anio }})</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-center text-muted mt-5">
+            No se encontraron películas.
+        </p>
+    {% endif %}
+</div>
+
+{% endblock %}

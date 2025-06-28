@@ -1,0 +1,51 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block contenido %}
+
+<style>
+    .centered-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh; 
+    }
+
+    .nav-button {
+        background-color: rgb(207, 123, 123);
+        color: black !important;
+        border: none;
+        margin: 0 5px;
+        font-weight: bold;
+    }
+
+    .nav-button:hover {
+        background-color: #ee8a8a;
+    }
+</style>
+
+
+<div class="centered-content">
+    <div class="w-100" style="max-width: 500px;">
+        <h2 class="text-center mb-4">Bienvenido al Blog de Películas</h2>
+
+        <div class="text-center mb-4">
+            <img src="{% static 'images/pop.jpeg' %}" alt="Banner cine" class="img-fluid rounded shadow-sm" style="max-width: 300px;">
+        </div>
+
+        <h3 class="text-center mb-4">¿Qué puedes hacer aquí?</h3>
+
+      <ul class="list-group list-group-flush text-start mx-auto" style="max-width: 500px;">
+             <div class="btn-group d-flex flex-wrap gap-3 justify-content-center mt-4" role="group">
+                     <a href="{% url 'crear_usuario' %}" class="btn nav-button btn-lg w-100 mb-2">Registrar un nuevo usuario</a>
+        
+                    <a href="{% url 'crear_pelicula' %}" class="btn nav-button btn-lg w-100 mb-2">Agregar una película</a>
+        
+                   <a href="{% url 'crear_reseña' %}" class="btn nav-button btn-lg w-100 mb-2">Escribir una reseña</a>
+        
+                    <a href="{% url 'listar_peliculas' %}" class="btn nav-button btn-lg w-100">Ver ranking de películas</a>
+        
+      </ul>
+        </div>
+    </div
+
+{% endblock %}

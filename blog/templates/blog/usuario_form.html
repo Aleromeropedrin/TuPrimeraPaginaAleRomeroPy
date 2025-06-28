@@ -1,0 +1,69 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block contenido %}
+
+<style>
+    .page-container {
+        background-image: url("{% static 'images/pop.jpeg' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+    }
+
+    .centered-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh; /* Ajuste para centrar verticalmente */
+    }
+
+    .form-container {
+        max-width: 500px;
+        width: 100%;
+        padding: 2rem;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .form-control {
+        background-color: #fff;
+        color: black;
+    }
+
+    .form-control:focus {
+        background-color: #f8f8f8;
+        border-color: #ccc;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    }
+</style>
+
+<!-- Contenedor centrado -->
+<div class="centered-form">
+    <div class="form-container">
+        <h2 class="text-center mb-4">Registrar Usuario</h2>
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- Campo Nombre -->
+            <div class="mb-3">
+                {{ form.nombre.label_tag }}
+                {{ form.nombre }}
+            </div>
+
+            <!-- Campo Email -->
+            <div class="mb-3">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+
+            <!-- Botón Guardar -->
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-success w-100">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

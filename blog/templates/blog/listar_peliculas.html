@@ -1,0 +1,46 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block contenido %}
+<style>
+    .page-container {
+        background-image: url("{% static 'images/proyector.png' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+    }
+        .btn-gray {
+        background-color: #e0e0e0;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        font-weight: bold;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .btn-gray:hover {
+        background-color: #d0d0d0;
+        color: darkslategray;
+    }
+</style>
+
+<h2 class="text-center mb-4">Ranking de Películas</h2>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for pelicula in peliculas %}
+        <div class="col">
+            <div class="card h-100 bg-dark text-white">
+                <div class="card-body">
+                    <h5 class="card-title">{{ pelicula.titulo }}</h5>
+                    <p class="card-text">Año: {{ pelicula.anio }}</p>
+                    <p class="card-text">Promedio: {{ pelicula.promedio|floatformat:2 }} ({{ pelicula.cantidad }} reseñas)</p>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <div class="alert alert-info text-center">No hay películas disponibles.</div>
+    {% endfor %}
+</div>
+<a href="{% url 'crear_pelicula' %}" class="btn-gray mt-4 d-inline-block">Agregar Película</a>
+{% endblock %}

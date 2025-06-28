@@ -1,4 +1,4 @@
-# TuPrimeraPaginaAleRomero
+# TuPrimeraPaginaAleRomeroPy
 
 Este es un proyecto realizado en Django siguiendo indicaciones de las clases.  
 Es una web estilo blog dedicada a reseñas de películas.
